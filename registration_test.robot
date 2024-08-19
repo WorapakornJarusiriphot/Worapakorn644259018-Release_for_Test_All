@@ -3,7 +3,7 @@ Documentation     Test cases for user registration functionality.
 Library           SeleniumLibrary
 
 *** Variables ***
-${URL}            https://dicedreams-eta.vercel.app/sign-up
+${URL}            http://localhost:3000/sign-up
 
 *** Keywords ***
 Should Contain Either Text

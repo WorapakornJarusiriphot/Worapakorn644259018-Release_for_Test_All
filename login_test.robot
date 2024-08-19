@@ -4,7 +4,7 @@ Library           SeleniumLibrary
 Library           Screenshot
 
 *** Variables ***
-${URL}            https://dicedreams-eta.vercel.app/sign-in#loaded
+${URL}            http://localhost:3000/sign-in
 
 *** Test Cases ***
 TC 10001 ทดสอบการเข้าสู่ระบบและตรวจสอบสิทธิ
@@ -17,9 +17,10 @@ TC 10001 ทดสอบการเข้าสู่ระบบและต�
     Wait Until Element Is Visible    xpath=//button[@type="submit"]    1s
     Click Button    xpath=//button[@type="submit"]
     Wait Until Element Is Visible    xpath=//button[text()="ออกจากระบบ"]    3s
-    Location Should Be    https://dicedreams-eta.vercel.app/
+    Location Should Be    http://localhost:3000/
     Page Should Contain    ออกจากระบบ
     Run Keyword And Continue On Failure    Execute JavaScript    return localStorage.getItem('access_token');
+    Sleep    5s
     Capture Page Screenshot    login_successful.png
     Close Browser
 
@@ -32,7 +33,8 @@ TC 10002 ทดสอบการเข้าสู่ระบบเมื่�
     Input Text    id=password    wrongpassword
     Wait Until Element Is Visible    xpath=//button[@type="submit"]    1s
     Click Button    xpath=//button[@type="submit"]
-    # Page Should Contain    คุณกรอก E-mail ไม่ถูกต้อง
+    Page Should Contain    คุณกรอก E-mail ไม่ถูกต้อง
+    Sleep    5s
     Capture Page Screenshot    invalid_email.png
     Close Browser
 
@@ -45,7 +47,8 @@ TC 10003 ทดสอบการเข้าสู่ระบบเมื่�
     Input Text    id=password    wrongpassword
     Wait Until Element Is Visible    xpath=//button[@type="submit"]    1s
     Click Button    xpath=//button[@type="submit"]
-    # Page Should Contain    คุณกรอก Password ผิด กรุณากรอก Password ให้ถูกต้อง
+    Page Should Contain    คุณกรอก Password ผิด กรุณากรอก Password ให้ถูกต้อง
+    Sleep    5s
     Capture Page Screenshot    invalid_password.png
     Close Browser
 
@@ -57,8 +60,9 @@ TC 10004 ทดสอบการเข้าสู่ระบบโดยไ�
     Wait Until Element Is Visible    xpath=//button[@type="submit"]    1s
     Click Button    xpath=//button[@type="submit"]
     Click Button    xpath=//button[@type="submit"]
-    # Page Should Contain    กรุณากรอกอีเมลหรือชื่อผู้ใช้
-    # Page Should Contain    กรุณากรอกรหัสผ่าน
+    Page Should Contain    กรุณากรอกอีเมลหรือชื่อผู้ใช้
+    Page Should Contain    กรุณากรอกรหัสผ่าน
+    Sleep    5s
     Capture Page Screenshot    empty_fields.png
     Close Browser
 
@@ -71,6 +75,7 @@ TC 10005 ทดสอบการเข้าสู่ระบบเมื่�
     Input Text    id=password    wrongpassword
     Wait Until Element Is Visible    xpath=//button[@type="submit"]    1s
     Click Button    xpath=//button[@type="submit"]
-    # Page Should Contain    คุณกรอก Username ไม่ถูกต้อง
+    Page Should Contain    คุณกรอก Username ไม่ถูกต้อง
+    Sleep    5s
     Capture Page Screenshot    invalid_username.png
     Close Browser
