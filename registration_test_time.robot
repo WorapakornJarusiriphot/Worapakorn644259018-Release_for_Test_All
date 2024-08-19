@@ -4,7 +4,7 @@ Library           SeleniumLibrary
 Library           DateTime
 
 *** Variables ***
-${URL}            https://dicedreams-eta.vercel.app/sign-up
+${URL}            http://localhost:3000/sign-up
 
 *** Keywords ***
 Should Contain Either Text
